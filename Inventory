@@ -1,0 +1,53 @@
+package com.company;
+
+public class Inventory { ;
+
+    private String sweater = "Bison_Sweater";
+    private String tee= "Bison_Tee";
+    private String hoodie = "Bison_Hoodie";
+    private String bumpersticker = "Bison_Bumpersticker";
+
+    double sweater_price = 55.99;
+    double tee_price = 14.99;
+    double hoodie_price = 23.99;
+    double bumpersticker_price = 4.99;
+
+
+    public Boolean inStock (String purchase) {
+        if (purchase.equals(sweater) || purchase.equals(tee) || purchase.equals(hoodie) || purchase.equals(bumpersticker)){
+            return true;
+        }
+        return false;
+    }
+
+    public String getSweater(){ return sweater; }
+
+    public double getSweater_price(){
+        return sweater_price;
+    }
+
+    public String getTee(){
+        return tee;
+    }
+
+    public double getTee_price(){
+        return tee_price;
+    }
+
+    public String getHoodie(){
+        return hoodie;
+    }
+
+    public double getHoodie_price(){
+        return hoodie_price;
+    }
+
+    public String getBumpersticker(){
+        return bumpersticker;
+    }
+
+    public double getBumpersticker_price(){
+        return bumpersticker_price;
+    }
+
+}
