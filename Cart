@@ -1,0 +1,41 @@
+package com.company;
+
+public class Cart {
+    private int sweater_units = 0;
+    private int tee_units = 0;
+    private int hoodie_units = 0;
+    private int bumpersticker_units = 0;
+
+    public int getSweater_units() {
+        return sweater_units;
+    }
+
+    public void setSweater_units(int amount) {
+        this.sweater_units = amount;
+    }
+
+    public int getTee_units() {
+        return tee_units;
+    }
+
+    public void setTee_units(int amount) {
+        this.tee_units = amount;
+    }
+
+    public int getHoodie_units() {
+        return hoodie_units;
+    }
+
+    public void setHoodie_units(int amount) {
+        this.hoodie_units = amount;
+    }
+
+    public int getBumpersticker_units() {
+        return bumpersticker_units;
+    }
+
+    public void setBumpersticker_units(int amount) {
+        this.bumpersticker_units = amount;
+    }
+
+}
