@@ -1,0 +1,133 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Bison Store!");
+        Scanner input = new Scanner(System.in);
+        String command;
+
+        //initialise classes to be used
+        Inventory All_Inventory = new Inventory();
+        Cart cart_1 = new Cart();
+
+        //initialise lists to be used
+        ArrayList<String> purchases = new ArrayList<String>();
+        ArrayList<Integer> units = new ArrayList<Integer>();
+        ArrayList<Double> invoice = new ArrayList<Double>();
+
+        do {
+            System.out.println("Commands: 1 - Add purchase, 2 - Change purchase, 3 - Show purchases , 4 - Finish transaction");
+            System.out.print("Enter a command: ");
+            command = input.next();
+
+            // add a purchase
+            if (command.equals("1")) {
+                System.out.println("These items are currently in stock:");
+                System.out.println(All_Inventory.getSweater() + " - " + All_Inventory.getSweater_price());
+                System.out.println(All_Inventory.getTee() + " - " + All_Inventory.getTee_price());
+                System.out.println(All_Inventory.getHoodie() + " - " + All_Inventory.getHoodie_price());
+                System.out.println(All_Inventory.getBumpersticker() + " - " + All_Inventory.getBumpersticker_price());
+
+                System.out.print("Enter the name of the product you want to purchase: ");
+                String purchase = input.next();
+
+                // check if item is already in cart
+                if (purchases.contains(purchase)) {
+                    System.out.print("Enter the new amount of " + purchase + "(s) for your cart: ");
+                    Integer new_units = input.nextInt();
+                    if (purchase.equals("Bison_Sweater")) {
+                        cart_1.setSweater_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    } else if (purchase.equals("Bison_Tee")) {
+                        cart_1.setTee_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    } else if (purchase.equals("Bison_Hoodie")) {
+                        cart_1.setHoodie_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    } else {
+                        cart_1.setBumpersticker_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    }
+                    // item is not in already cart so add new item to cart
+                } else if (All_Inventory.inStock(purchase)) {
+                    System.out.print("Enter the number of " + purchase + "(s) to buy: ");
+                    Integer new_units = input.nextInt();
+                    purchases.add(purchase);
+                    if (purchase.equals("Bison_Sweater")) {
+                        cart_1.setSweater_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    } else if (purchase.equals("Bison_Tee")) {
+                        cart_1.setTee_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    } else if (purchase.equals("Bison_Hoodie")) {
+                        cart_1.setHoodie_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    } else if (purchase.equals("Bison_Bumpersticker")) {
+                        cart_1.setBumpersticker_units(new_units);
+                        System.out.println(new_units + " " + purchase + "(s) now in your cart!");
+                    }
+                } else {
+                    System.out.println("Sorry, " + purchase + " is not in our inventory.");
+                }
+
+                // change a purchase
+            } else if (command.equals("2")) {
+                System.out.print("Enter the name of product to change on your invoice: ");
+                String purchase_to_change = input.next();
+                if (purchases.contains(purchase_to_change)) {
+                    System.out.print("Enter the new amount of " + purchase_to_change + "(s) for your cart: ");
+                    Integer new_units = input.nextInt();
+                    if (purchase_to_change.equals("Bison_Sweater")) {
+                        cart_1.setSweater_units(new_units);
+                        System.out.println(new_units + " " + purchase_to_change + "(s) now in your cart!");
+                    } else if (purchase_to_change.equals("Bison_Tee")) {
+                        cart_1.setTee_units(new_units);
+                        System.out.println(new_units + " " + purchase_to_change + "(s) now in your cart!");
+                    } else if (purchase_to_change.equals("Bison_Hoodie")) {
+                        cart_1.setHoodie_units(new_units);
+                        System.out.println(new_units + " " + purchase_to_change + "(s) now in your cart!");
+                    } else  {
+                        cart_1.setBumpersticker_units(new_units);
+                        System.out.println(new_units + " " + purchase_to_change + "(s) now in your cart!");
+                    }
+                } else {
+                    System.out.println("Sorry, " + purchase_to_change + " is not in your cart");
+                }
+                //display current invoice
+            } else if (command.equals("3")) {
+                if (cart_1.getSweater_units() + cart_1.getTee_units() + cart_1.getHoodie_units() + cart_1.getBumpersticker_units() == 0) {
+                    System.out.println("You currently have no items in your cart!");
+                } else {
+                    System.out.println("This is your current invoice:");
+                    System.out.println("----------------------------------");
+                    System.out.println(All_Inventory.getSweater() + " x" + cart_1.getSweater_units());
+                    System.out.println(All_Inventory.getTee() + " x" + cart_1.getTee_units());
+                    System.out.println(All_Inventory.getHoodie() + " x" + cart_1.getHoodie_units());
+                    System.out.println(All_Inventory.getBumpersticker() + " x" + cart_1.getBumpersticker_units());
+                    System.out.println("----------------------------------");
+                }
+            }
+
+            // finish transaction and print total
+        } while (!command.equals("4"));
+        System.out.println("Thank you for shopping at the Bison Store! Your itemized bill is below: ");
+        System.out.println("------------------------------------------");
+        System.out.println(All_Inventory.getSweater() + " x" + cart_1.getSweater_units() + " @ " + All_Inventory.getSweater_price());
+        System.out.println(All_Inventory.getTee() + " x" + cart_1.getTee_units() + " @ " + All_Inventory.getTee_price());
+        System.out.println(All_Inventory.getHoodie() + " x" + cart_1.getHoodie_units() + " @ " + All_Inventory.getHoodie_price());
+        System.out.println(All_Inventory.getBumpersticker() + " x" + cart_1.getBumpersticker_units() +" @ " + All_Inventory.getBumpersticker_price());
+
+        double total = 0.00;
+        total = total + cart_1.getSweater_units() * All_Inventory.getSweater_price();
+        total = total + cart_1.getTee_units() * All_Inventory.getTee_price();
+        total = total + cart_1.getHoodie_units() * All_Inventory.getHoodie_price();
+        total = total + cart_1.getBumpersticker_units() * All_Inventory.getBumpersticker_price();
+
+        System.out.println("------------------------------------------");
+        System.out.println("Your total is $" + String.format("%.2f",total));
+    }
+}
