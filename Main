@@ -104,10 +104,18 @@ public class Main {
                 } else {
                     System.out.println("This is your current invoice:");
                     System.out.println("----------------------------------");
-                    System.out.println(All_Inventory.getSweater() + " x" + cart_1.getSweater_units());
-                    System.out.println(All_Inventory.getTee() + " x" + cart_1.getTee_units());
-                    System.out.println(All_Inventory.getHoodie() + " x" + cart_1.getHoodie_units());
-                    System.out.println(All_Inventory.getBumpersticker() + " x" + cart_1.getBumpersticker_units());
+                    if (cart_1.getSweater_units()>0){
+                        System.out.println(All_Inventory.getSweater() + " x" + cart_1.getSweater_units());
+                    }
+                    if (cart_1.getTee_units()>0){
+                        System.out.println(All_Inventory.getTee() + " x" + cart_1.getTee_units());
+                    }
+                    if (cart_1.getHoodie_units()>0){
+                        System.out.println(All_Inventory.getHoodie() + " x" + cart_1.getHoodie_units());
+                    }
+                    if (cart_1.getBumpersticker_units()>0) {
+                        System.out.println(All_Inventory.getBumpersticker() + " x" + cart_1.getBumpersticker_units());
+                    }
                     System.out.println("----------------------------------");
                 }
             }
@@ -116,10 +124,18 @@ public class Main {
         } while (!command.equals("4"));
         System.out.println("Thank you for shopping at the Bison Store! Your itemized bill is below: ");
         System.out.println("------------------------------------------");
-        System.out.println(All_Inventory.getSweater() + " x" + cart_1.getSweater_units() + " @ " + All_Inventory.getSweater_price());
-        System.out.println(All_Inventory.getTee() + " x" + cart_1.getTee_units() + " @ " + All_Inventory.getTee_price());
-        System.out.println(All_Inventory.getHoodie() + " x" + cart_1.getHoodie_units() + " @ " + All_Inventory.getHoodie_price());
-        System.out.println(All_Inventory.getBumpersticker() + " x" + cart_1.getBumpersticker_units() +" @ " + All_Inventory.getBumpersticker_price());
+        if (cart_1.getSweater_units()>0){
+            System.out.println(All_Inventory.getSweater() + " x" + cart_1.getSweater_units() + " @ " + All_Inventory.getSweater_price());
+        }
+        if (cart_1.getTee_units()>0){
+            System.out.println(All_Inventory.getTee() + " x" + cart_1.getTee_units() + " @ " + All_Inventory.getTee_price());
+        }
+        if (cart_1.getHoodie_units()>0){
+            System.out.println(All_Inventory.getHoodie() + " x" + cart_1.getHoodie_units() + " @ " + All_Inventory.getHoodie_price());
+        }
+        if (cart_1.getBumpersticker_units()>0){
+            System.out.println(All_Inventory.getBumpersticker() + " x" + cart_1.getBumpersticker_units() +" @ " + All_Inventory.getBumpersticker_price());
+        }
 
         double total = 0.00;
         total = total + cart_1.getSweater_units() * All_Inventory.getSweater_price();
