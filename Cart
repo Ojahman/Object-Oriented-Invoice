@@ -6,6 +6,17 @@ public class Cart {
     private int hoodie_units = 0;
     private int bumpersticker_units = 0;
 
+
+    public Boolean inCart (String purchase){
+        if ((purchase.equals("Bison_Sweater") && sweater_units > 0)
+                || (purchase.equals("Bison_Tee") && tee_units > 0)
+                || (purchase.equals("Bison_Hoodie") && hoodie_units > 0)
+                || (purchase.equals("Bison_Bumpersticker") && bumpersticker_units > 0)){
+            return true;
+        }
+        return false;
+    }
+
     public int getSweater_units() {
         return sweater_units;
     }
